@@ -5,7 +5,9 @@ const albumItemContainer = {
   width: '410px',
   border: '5px solid pink',
   borderRadius: '12px 0px',
-  backgroundColor:'#18dcff'
+  backgroundColor:'#18dcff',
+  display: 'flex',
+  flexDirection: 'column'
 
 };
 
@@ -31,7 +33,7 @@ const AlbumCard = (props) => {
           </div>
           <div >
             <p style={albumTitle}>{props.album.title}</p>
-           <Link to={`/albums/${props.album.id}`}><button onClick={() => props.onfetchAlbum(props.album.id)}>visit</button></Link> 
+           <Link to={`/albums/${props.album.id}`}><button>visit</button></Link> 
           </div >
     </div>
   )
