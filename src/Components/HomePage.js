@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import AlbumCard from  './AlbumCard'
 import axios from 'axios'
+import { connect } from "react-redux";
 
 //styling
 const HomePageContainer={
@@ -16,9 +17,8 @@ const AlbumListToDisplay= {
 
 const apiUrl='https://jsonplaceholder.typicode.com/albums'
 class HomePage extends Component {
-  state={albums:[]}
   componentDidMount() {
-    axios.get(apiUrl).then(res => {this.setState({albums: res.data});  })}
+    axios.get(apiUrl).then(res => this.props.initAlbumList(res.data))}
   render() {
     return (
       <div style={HomePageContainer} >
@@ -32,13 +32,32 @@ class HomePage extends Component {
         textDecoration: 'none'}}>WishList</NavLink>
         </li>
         </ul>
+
         <div style={AlbumListToDisplay}>
-      {this.state.albums.map(album=><AlbumCard  key={album.id} album={album}></AlbumCard>
+      {this.props.AlbumsList.map(album=><AlbumCard  key={album.id} album={album}></AlbumCard>
       )}
         </div>
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    AlbumsList: state.Albums
+  };
+};
 
-export default HomePage;
+const mapDispatchToProps = dispatch => {
+  return {
+    initAlbumList: albums => {
+      dispatch({
+        type: "FETCHALBUMS",
+        albums
+      });
+    }
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);
