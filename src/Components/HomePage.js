@@ -8,13 +8,11 @@ import { connect } from "react-redux";
 const HomePageContainer={
   backgroundColor: "#5fadad",
   backgroundSize: "cover !important"
-
 }
 const AlbumListToDisplay= {
   display: 'flex',      //The flex-wrap property specifies whether the flexible items should wrap or not.
   flexWrap: 'wrap', 
 }
-
 const apiUrl='https://jsonplaceholder.typicode.com/albums'
 class HomePage extends Component {
   componentDidMount() {
