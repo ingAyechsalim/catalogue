@@ -22,8 +22,9 @@ const Routes = () => {
         />
         <Route
           exact
-          path="/albums/:id/photo"
-          render={(props) => <PhotoToDisplay id={props.match.params.id}/> }
+          path="/photos/:id"
+          render={(props) => <PhotoToDisplay id={props.match.params.id}
+          /> }
         />
           <Route
           exact

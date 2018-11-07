@@ -15,7 +15,7 @@ const albumTitle = {
   fontSize: '16px',
   textAlign: 'center',
   fontFamily: "sans-serif",
-
+  textDecoration: 'none'
 
 };
 const imageAlbum={
@@ -23,6 +23,11 @@ const imageAlbum={
 
 };
 const AlbumCard = (props) => {
+  const {album = {}} = props
+    const {
+         id,
+      title= "",
+    } =album
   return (
     <div style={albumItemContainer} >
       <div >
@@ -32,8 +37,8 @@ const AlbumCard = (props) => {
 
           </div>
           <div >
-            <p style={albumTitle}>{props.album.title}</p>
-           <Link to={`/albums/${props.album.id}`}><button>visit</button></Link> 
+            
+           <Link style={albumTitle} to={`/albums/${id}`}><p >{title}</p></Link> 
           </div >
     </div>
   )
