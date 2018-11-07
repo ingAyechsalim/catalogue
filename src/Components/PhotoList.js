@@ -14,15 +14,12 @@ class PhotoList extends Component {
   this.state={
        apiUrl1:"https://jsonplaceholder.typicode.com/Photos/".concat(this.props.id,"/photos")//Get data from new url of the spécifique album
   }
-
  }
 componentDidMount() {
   axios.get(this.state.apiUrl1).then(res => this.props.initPhotoList(res.data)
 
   );
 }
-  
-    
   render() {
     return (
       <div>
