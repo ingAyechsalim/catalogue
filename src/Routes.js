@@ -28,7 +28,7 @@ const Routes = () => {
           <Route
           exact
           path="/WishList"
-          render={() => <PhotoToDisplay/> }
+          render={() => <WishList/> }
         />
 
             </Switch>
