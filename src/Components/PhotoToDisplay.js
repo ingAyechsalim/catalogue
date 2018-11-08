@@ -49,17 +49,17 @@ hight:'50px'
 
 const PhotoToDisplay = (props) => {
      const {
-     id=0,
-     photos = {}
-
-    } = props
-    const {
+      id=0,
+      photos = {},
+      onAddWish = () => {}
+         } = props
+     const {
       albumId=0 ,
       title= "",
       url= "",
       thumbnailUrl=""
     } = photos[id]
-console.log(props.photos[id])
+ console.log(photos)
       return (
     <div style={PhotoItemContainer} >
       <div >  
@@ -70,8 +70,8 @@ console.log(props.photos[id])
             
            <p style={PhotoTitle} >{title}</p>
           </div >
-          <button style={FavorisButton}> <img style={FavorisImage}  src={require("./heart.png")} /></button>
-
+          <button onClick={()=>{onAddWish(photos[id])}} style={FavorisButton}> <img style={FavorisImage}  src={require("./heart.png")} /></button>
+        
     </div>
   )
 }
@@ -83,6 +83,12 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
+    onAddWish: (photo) => {
+      dispatch({
+          type: 'ADDWISH',
+           Wish:photo
+        });
+  }
        }
   
 };
