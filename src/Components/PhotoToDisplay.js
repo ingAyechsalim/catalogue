@@ -62,9 +62,7 @@ const PhotoToDisplay = (props) => {
 console.log(props.photos[id])
       return (
     <div style={PhotoItemContainer} >
-      <div >
-    
-     
+      <div >  
             <img style={ImageCard} src= {url} alt="description of Photos"/>
 
           </div>
