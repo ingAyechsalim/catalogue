@@ -1,9 +1,11 @@
+import { connect } from "react-redux";
+
 import React from 'react'
-import {Link} from 'react-router-dom'
+
 //styling my page
 const PhotoItemContainer = {
   margin: '20px',
-  width: '410px',
+  width: '600px',
   border: '5px solid pink',
   borderRadius: '12px 0px',
   backgroundColor:'#18dcff',
@@ -46,16 +48,19 @@ hight:'50px'
 //our component
 
 const PhotoToDisplay = (props) => {
-  const {photos = {}} = props
+     const {
+     id=0,
+     photos = {}
+
+    } = props
     const {
-      albumId ,
-      id,
+      albumId=0 ,
       title= "",
       url= "",
       thumbnailUrl=""
-    } = photos
-    console.log(props)
-  return (
+    } = photos[id]
+console.log(props.photos[id])
+      return (
     <div style={PhotoItemContainer} >
       <div >
     
@@ -72,5 +77,20 @@ const PhotoToDisplay = (props) => {
     </div>
   )
 }
+const mapStateToProps = state => {
+  return {
+    photos: state.Album
+  }
 
-export default PhotoToDisplay
+}
+const mapDispatchToProps = dispatch => {
+  return {
+       }
+  
+};
+
+const PhotoToDisplayContainer =
+    connect(mapStateToProps, mapDispatchToProps)(PhotoToDisplay)
+
+
+export default PhotoToDisplayContainer

@@ -7,7 +7,9 @@ const albumItemContainer = {
   borderRadius: '12px 0px',
   backgroundColor:'#18dcff',
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+  boxShadow: "0 5px 3px 0 #ebebeb"
+
 
 };
 

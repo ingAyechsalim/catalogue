@@ -8,7 +8,9 @@ const PhotoItemContainer = {
   borderRadius: '12px 0px',
   backgroundColor:'#18dcff',
   display: 'flex',
-  flexDirection: 'column'
+  flexDirection: 'column',
+
+  boxShadow: "0 5px 3px 0 #ebebeb"
 
 };
 
@@ -47,7 +49,7 @@ hight:'50px'
 const PhotoCard = (props) => {
   const {photos = {}} = props
     const {
-      albumId ,
+      albumId=0 ,
       id,
       title= "",
       url= "",
