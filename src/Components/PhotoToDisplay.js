@@ -1,17 +1,23 @@
 import { connect } from "react-redux";
-
 import React from 'react'
-
+import axios from 'axios'
 //styling my page
+const PhotoContainer={
+  backgroundImage: `url("./images/background2.jpg")` ,
+  height:'100%',
+ backgroundRepeat:'no-repeat' ,
+ backgroundAttachement:'fixed',
+}
+
 const PhotoItemContainer = {
-  margin: '20px',
   width: '600px',
   border: '5px solid pink',
   borderRadius: '12px 0px',
-  backgroundColor:'#18dcff',
+  backgroundColor: 'rgba(0, 140, 255, .5)',
   display: 'flex',
-  flexDirection: 'column'
-
+  flexDirection: 'column',
+  marginTop:'5%',
+  marginLeft:'20%'
 };
 
 const PhotoTitle = {
@@ -19,82 +25,80 @@ const PhotoTitle = {
   textAlign: 'center',
   fontFamily: "sans-serif",
   textDecoration: 'none'
-
-
 };
+
 const ImageCard={
   borderRadius: '12px 0px',
-
 };
 const FavorisButton={
   border: 'none' ,
   margin: '4px 2px',
-    cursor: 'pointer',
-
+  cursor: 'pointer',
   backgroundColor: 'Transparent',
   width:'50px',
-
- 
-
 }
 const FavorisImage={
   padding: "2%",
-
-width:'50px',
-hight:'50px'
-
+  width:'50px',
+  hight:'50px'
 }
 
-//our component
+/*const onAddWishe = (photo) => {
+  axios.post("https://jsonplaceholder.typicode.com/posts", {
+    photo
 
+  })
+    .then(res => console.log(res.data.photo))
+
+}// for posting data to the server*/
+      
+//our component
 const PhotoToDisplay = (props) => {
      const {
       id=0,
-      photos = {},
-      onAddWish = () => {}
+      photos={},
+      onAddWish = () => {},
          } = props
-     const {
-      albumId=0 ,
+             const {
       title= "",
       url= "",
-      thumbnailUrl=""
     } = photos[id]
- console.log(photos)
-      return (
-    <div style={PhotoItemContainer} >
-      <div >  
-            <img style={ImageCard} src= {url} alt="description of Photos"/>
+    console.log(props.id);
 
+      return (
+        <div style={PhotoContainer}>
+        <h1 style={{color:'white',marginLeft:'30px'}}>   YOUR PHOTO </h1>
+       <div style={PhotoItemContainer} >
+      <div >  
+      <img style={ImageCard} src= {url} alt=""/>
           </div>
           <div >
-            
-           <p style={PhotoTitle} >{title}</p>
+                     <p style={PhotoTitle} >{title}</p>
           </div >
-          <button onClick={()=>{onAddWish(photos[id])}} style={FavorisButton}> <img style={FavorisImage}  src={require("./heart.png")} /></button>
-        
+          <button onClick={()=>{onAddWish(photos[id])}} style={FavorisButton}> 
+          <img style={FavorisImage}  src={require("./images/heart.png")} alt='icon' /></button>
     </div>
+    </div>
+
   )
 }
+
 const mapStateToProps = state => {
   return {
     photos: state.Album
   }
-
 }
+
 const mapDispatchToProps = dispatch => {
   return {
-    onAddWish: (photo) => {
+    onAddWish: (photos) => {
       dispatch({
           type: 'ADDWISH',
-           Wish:photo
+           newWish:photos
         });
-  }
-       }
-  
-};
+  }       }};
 
-const PhotoToDisplayContainer =
-    connect(mapStateToProps, mapDispatchToProps)(PhotoToDisplay)
+const PhotoToDisplayContainer = connect(mapStateToProps, mapDispatchToProps)(PhotoToDisplay)
 
 
 export default PhotoToDisplayContainer
