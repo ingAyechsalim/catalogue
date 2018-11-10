@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React from "react";
 //styling my page
 const PhotoContainer = {
-  backgroundImage: `url("http://127.0.0.1:8887/src/Components/images/background2.jpg")`,
+  backgroundImage: `url("/images/background2.jpg")`,
   height: "100%",
   backgroundRepeat: "no-repeat",
   backgroundAttachement: "fixed"

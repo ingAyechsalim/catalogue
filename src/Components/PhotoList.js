@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import React, { Component } from "react";
 import PhotoCard from "./PhotoCard";
-
 import axios from "axios";
+
+import Hoc from "./Hoc";
 
 const PhotoListContainer = {
   background: `url("/images/background2.jpg")`,
@@ -15,34 +16,52 @@ const PhotoToDisplay = {
   display: "flex", //The flex-wrap property specifies whether the flexible items should wrap or not.
   flexWrap: "wrap"
 };
+/*
+description:
+First we recupered the id of album from the nested route, after that we reform the new apiurl of specifique album,
+ and we fetch all
+photos from this url using componentDidmount lifecycle, after that we dispatch those photos to our redux store finally we display those photo in our
+component using map that's it 
+we have use of corse our HOC spinner to make beautiful view
 
+*/
 class PhotoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       apiUrl1: "https://jsonplaceholder.typicode.com/albums/".concat(
         this.props.id,
         "/photos"
-      ) //Get data from new url of the spécifique album
+      ) //Get data from new url of the spécifique album id recupered from route
     };
     console.log(this.state.apiUrl1);
   }
   componentDidMount() {
-    axios
-      .get(this.state.apiUrl1)
-      .then(res => this.props.initPhotoList(res.data));
+    axios.get(this.state.apiUrl1).then(res => {
+      this.props.initPhotoList(res.data);
+      this.setState({
+        isLoading: false
+      });
+    });
   }
   render() {
-    return (
-      <div style={PhotoListContainer}>
-        <h1 style={{ color: "white", paddingLeft: "30px" }}> PhotoList</h1>
-        <div style={PhotoToDisplay}>
-          {this.props.PhotosList.map(photos => (
-            <PhotoCard key={photos.id} photos={photos} />
-          ))}
-        </div>{" "}
-      </div>
-    );
+    const { isLoading } = this.state;
+    if (isLoading) {
+      return <Hoc message={isLoading} />;
+    } else {
+      return (
+        <div style={PhotoListContainer}>
+          <h1 style={{ color: "white", paddingLeft: "30px" }}> PhotoList</h1>
+          <div style={PhotoToDisplay}>
+            {this.props.PhotosList.map(photos => (
+              <PhotoCard key={photos.id} photos={photos} />
+            ))}
+          </div>
+          {""}
+        </div>
+      );
+    }
   }
 }
 const mapStateToProps = state => {

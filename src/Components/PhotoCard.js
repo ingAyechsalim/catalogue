@@ -27,19 +27,19 @@ const FavorisButton = {
   border: "none",
   padding: "4px 2px",
   cursor: "pointer",
-  width: "50px"
+  width: "0px"
 };
 const FavorisImage = {
   padding: "2%",
-  width: "50px",
-  hight: "50px"
+  width: "70px",
+  hight: "70px"
 };
 //our component
 
 const PhotoCard = props => {
   const { photos = {}, onAddWish = () => {} } = props;
   const { id, title = "", thumbnailUrl = "" } = photos;
-  console.log(photos);
+  //console.log(photos);
   return (
     <div style={PhotoItemContainer}>
       <div>
@@ -71,7 +71,7 @@ const PhotoCard = props => {
     </div>
   );
 };
-const mapStateToProps = state => {};
+const mapStateToProps = state => {}; //we dont need any state from redux we have only dipatch the action to Add photo in store to our wichlist
 const mapDispatchToProps = dispatch => {
   return {
     onAddWish: photos => {
