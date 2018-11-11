@@ -28,19 +28,35 @@ Favorite images display paginated favorite lists of images
 The general project breakdown looks like this:
 1-folder:Components:
 -HomePage witch  display all lists of albums using albumcard component
+
 -Photolist witch  display all lists of images using PhotoCard component
+
+
 -wishlist witch  display all lists of wished images using wishcard component
+
 -Phototodeplay witch desplay the desired photo from photolist
+
 navbar/footer/hoc optional component for the design of our application
+
 2-folder store: contain all Reducers for our application
+
 -albumsreducer for lists of albums
+
 -albumreduer for photolist of specifique album
+
 -wishlistreducer fir wishlist
+
 -store where we configurate our store
+
 3-folder: images witch contain all list of image used for styling
+
 4-Route where we define lists of routes
+
 5-index the container component
+
 --->The general project structure looks like this:
+
+
 *public*
 |---/images
 ├── */src/*
