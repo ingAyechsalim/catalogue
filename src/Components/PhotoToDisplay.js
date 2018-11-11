@@ -43,11 +43,19 @@ const FavorisImage = {
 };
 
 //our component
+/*
+ *description:
+ *in this stateless component we take all photos from redux store using mapStatetoprops from  and we desplay only the photo
+ *with specifique Id taked from the nested route
+ **onclik lIKE ICON we dispatch an to redux reducer wishlist to ad it to wishlit
+ */
+const notificate = () => {
+  prompt("GREAT YOUR PHOTO IS ADDED");
+};
 const PhotoToDisplay = props => {
   const { id = 0, photos = {}, onAddWish = () => {} } = props;
-  const { title = "", url = "" } = photos[id];
-  console.log(props.id);
-
+  const { title = "", url = "" } = photos[id]; //destruturing of props we make a default values to dont return undifined to our view
+  console.log(props.id); // we have Id that we take it from the route and the photo that we take it from store
   return (
     <div style={PhotoContainer}>
       <h1 style={{ color: "white", marginLeft: "30px" }}> YOUR PHOTO </h1>
@@ -61,6 +69,7 @@ const PhotoToDisplay = props => {
         <button
           onClick={() => {
             onAddWish(photos[id]);
+            notificate();
           }}
           style={FavorisButton}
         >

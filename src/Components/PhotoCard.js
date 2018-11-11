@@ -34,7 +34,14 @@ const FavorisImage = {
   width: "70px",
   hight: "70px"
 };
-//our component
+//our dumb component
+/* wW use this stateless component to display all list of photos in the specifique album {PhotoList} used by Photolist
+ *We have a link that we take us to the specifique  photo to display we passe the id us route props
+ *Of corse the onclick button dispatch an action to wishList Reducer you are free if you want to add it in this stage
+ */
+const notificate = () => {
+  alert("GREAT YOUR PHOTO IS ADDED");
+};
 
 const PhotoCard = props => {
   const { photos = {}, onAddWish = () => {} } = props;
@@ -47,6 +54,7 @@ const PhotoCard = props => {
           style={FavorisButton}
           onClick={() => {
             onAddWish(photos);
+            notificate();
           }}
         >
           <img

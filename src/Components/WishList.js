@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
 import { Link } from "react-router-dom";
-
 import WishCard from "./WishCard";
 
 const PhotoToDisplayContainer = {
@@ -23,15 +22,23 @@ const FavorisImage = {
   hight: "200px"
 };
 
+/*
+description:
+in this stateless component we take all photos added to wishlit usin mapStatetoprops from redux store and we desplay them
+ one by one using map(wishcard component)
+if our panier is empty we show a simple photo that linked to the home page
+*/
 const WishList = props => {
-  const { photos = {} } = props; //
+  const { photos = {} } = props; //destruturing of props we make a default values to dont return undifined to our view
   console.log(photos);
   if (photos.length === 0)
     return (
-      <div style={{ paddingTop: "100px", marginLeft: "40%" }}>
-        <Link to="/">
-          <img style={FavorisImage} src="./images/panier.png" alt="panier" />
-        </Link>
+      <div>
+        <div style={{ paddingTop: "100px", paddingLeft: "40%" }}>
+          <Link to="/">
+            <img style={FavorisImage} src="./images/panier.png" alt="panier" />
+          </Link>
+        </div>
       </div>
     );
   else

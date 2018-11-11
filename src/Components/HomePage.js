@@ -19,14 +19,16 @@ const AlbumListToDisplay = {
   paddingTop: "50px"
 };
 const apiUrl = "https://jsonplaceholder.typicode.com/albums";
-/*
-description:
-First we and we fetch all albums from this url using componentDidmount lifecycle,
- after that we dispatch those albums to our redux store finally we display them in our
-component using map
-we have used Hoc to show some animation : until those albums come if there is no albums Loading spinner is activated :)
+/**
+ *description:
+ *This smart Component used to
+ *First  we fetch all albums from this url using componentDidmount lifecycle,
+ *after that we dispatch those albums to our redux store(fetchalbum) finally we display them in our
+ *component using map
+ *we have used Hoc to show some animation : until those albums come if there is no albums Loading spinner is activated :)
+ *Albums State come from Redux store that is dispatched first from axios
+ */
 
-*/
 class HomePage extends Component {
   state = { isLoading: true };
 

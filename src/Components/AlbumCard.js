@@ -21,6 +21,10 @@ const albumTitle = {
 const imageAlbum = {
   borderRadius: "12px 0px"
 };
+/**Desription:
+ * AlbumCard is the unit component used by HomePage to desplayy all album list. We used a link with Id to PhotoList Component
+ *  that we will use this Id to filter th ApiUrl for fetching data  from api
+ */
 const AlbumCard = props => {
   const { album = {} } = props;
   const { id, title = "" } = album;

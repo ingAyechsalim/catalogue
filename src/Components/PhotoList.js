@@ -17,12 +17,12 @@ const PhotoToDisplay = {
   flexWrap: "wrap"
 };
 /*
-description:
-First we recupered the id of album from the nested route, after that we reform the new apiurl of specifique album,
- and we fetch all
-photos from this url using componentDidmount lifecycle, after that we dispatch those photos to our redux store finally we display those photo in our
-component using map that's it 
-we have use of corse our HOC spinner to make beautiful view
+*description:
+*First we recupered the id of album from the nested route, after that we reform the new apiurl of specifique album,
+ *and we fetch all
+*photos from this url using componentDidmount lifecycle, after that we dispatch those photos to our redux store finally we display those photo in our
+*component using map that's it 
+*we have use of corse our HOC spinner to make beautiful view
 
 */
 class PhotoList extends Component {

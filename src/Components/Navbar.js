@@ -19,6 +19,12 @@ const SigleImage = {
   marginTop: "-20px",
   overflow: "hidden"
 };
+/**Description
+ * responsive Navbar with fixed position. We use it to reduce code in all components
+ * Navbar will be used in the Container component
+ * Logo it can be designed using photoshop,powerpoint,or some free website
+ *
+ */
 
 const Navbar = () => {
   return (
