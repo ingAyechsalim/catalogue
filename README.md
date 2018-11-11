@@ -1,10 +1,9 @@
-  CATALOG APPlication: it's a real simple exemple of React application that we use redux
+  CATALOG Application: it's a real simple exemple of React application that we use redux/axios/react router
 
 
 
 
 Getting started
-You can view a live demo over at https://react-redux.realworld.io/
 
 To get the frontend running locally:
 
