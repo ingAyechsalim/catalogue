@@ -1,44 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  CATALOG APPlication: it's a real simple exemple of React application that we use redux
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Getting started
+You can view a live demo over at https://react-redux.realworld.io/
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+To get the frontend running locally:
 
-### `npm test`
+Clone this repo
+npm install to install all req'd dependencies
+npm start to start the local server (this project uses create-react-app)
+Local web server will use standard React's port 3000. 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Making requests to the backend API
+For convenience, we have a live API server running at https://jsonplaceholder.typicode.com/for the application to make requests against. 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Functionality overview
+The example application is a Catalogue site (i.e. a  called "mycatalogue". It uses a cAPI for get requests,
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+General functionality:
+GET and display paginated lists of albums
+GET and display paginated lists of images for desired album /add to favorite
+display desired image add to favorite
+Favorite images display paginated favorite lists of images
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The general project breakdown looks like this:
+1-folder:Components:
+-HomePage witch  display all lists of albums using albumcard component
+-Photolist witch  display all lists of images using PhotoCard component
+-wishlist witch  display all lists of wished images using wishcard component
+-Phototodeplay witch desplay the desired photo from photolist
+navbar/footer/hoc optional component for the design of our application
+2-folder store: contain all Reducers for our application
+-albumsreducer for lists of albums
+-albumreduer for photolist of specifique album
+-wishlistreducer fir wishlist
+-store where we configurate our store
+3-folder: images witch contain all list of image used for styling
+4-Route where we define lists of routes
+5-index the container component
+--->The general project structure looks like this:
+*public*
+|---/images
+├── */src/*
+│   ├── */Components* all components
+│   ├── */store* redux reducers
+│   ├── *Routes.js* front-end routes      
+│   │
+│   └──*index.js* javascript entry point
+│   
+│
+├── *package.json* the whole package.json with every dependency and script, nothing is kept hidden
+│
+└── *README.md* this file
 
-### `npm run eject`
+the application is based On:
+creacte-react-app react-router Redux axios inline style npm webpack container components stateless components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
