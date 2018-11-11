@@ -9,7 +9,6 @@ const FooterContainer = {
   backgroundColor: "rgba(0,0,0,.5)",
   textAlign: "center",
   zIndex: "99",
-  textAlign: "center",
   fontSize: "15px"
 };
 

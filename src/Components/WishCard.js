@@ -5,10 +5,9 @@ const PhotoItemContainer = {
   width: "410px",
   border: "5px solid pink",
   borderRadius: "12px 0px",
-  backgroundColor: "#18dcff",
+  backgroundColor: "rgba(0, 140, 255, .5)",
   display: "flex",
   flexDirection: "column",
-
   boxShadow: "0 5px 3px 0 #ebebeb"
 };
 
@@ -19,6 +18,7 @@ const PhotoTitle = {
   fontSize: "16px",
   textAlign: "center",
   fontFamily: "sans-serif",
+  color: "white",
   textDecoration: "none"
 };
 //our component

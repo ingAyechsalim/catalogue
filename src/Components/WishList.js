@@ -5,16 +5,18 @@ import WishCard from "./WishCard";
 
 const PhotoToDisplayContainer = {
   background: `url("/images/background3.jpg")`,
-  height: "100%",
   backgroundRepeat: "no-repeat",
-  backgroundAttachement: "fixed",
-  backgroundSize: "cover"
+  position: "fixed",
+  backgroundSize: "cover",
+  height: "800px",
+  width: "100%"
 };
 
 const PhotoToDisplay = {
   paddingTop: "60px",
   display: "flex", //The flex-wrap property specifies whether the flexible items should wrap or not.
-  flexWrap: "wrap"
+  flexWrap: "wrap",
+  hight: "100%"
 };
 const FavorisImage = {
   padding: "2%",
@@ -33,7 +35,7 @@ const WishList = props => {
   console.log(photos);
   if (photos.length === 0)
     return (
-      <div>
+      <div style={PhotoToDisplayContainer}>
         <div style={{ paddingTop: "100px", paddingLeft: "40%" }}>
           <Link to="/">
             <img style={FavorisImage} src="./images/panier.png" alt="panier" />

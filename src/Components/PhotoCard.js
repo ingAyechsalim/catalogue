@@ -39,13 +39,13 @@ const FavorisImage = {
  *We have a link that we take us to the specifique  photo to display we passe the id us route props
  *Of corse the onclick button dispatch an action to wishList Reducer you are free if you want to add it in this stage
  */
-const notificate = () => {
-  alert("GREAT YOUR PHOTO IS ADDED");
-};
+function notificate() {
+  return alert("GREAT YOUR PHOTO IS ADDED TO YOUR WISHLIST");
+}
 
 const PhotoCard = props => {
   const { photos = {}, onAddWish = () => {} } = props;
-  const { id, title = "", thumbnailUrl = "" } = photos;
+  const { id = 0, title = "", thumbnailUrl = "" } = photos;
   //console.log(photos);
   return (
     <div style={PhotoItemContainer}>
@@ -79,7 +79,9 @@ const PhotoCard = props => {
     </div>
   );
 };
-const mapStateToProps = state => {}; //we dont need any state from redux we have only dipatch the action to Add photo in store to our wichlist
+const mapStateToProps = () => {
+  return {};
+}; //we dont need any state from redux we have only dipatch the action to Add photo in store to our wichlist
 const mapDispatchToProps = dispatch => {
   return {
     onAddWish: photos => {
@@ -91,9 +93,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const PhotoCardContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhotoCard);
-
-export default PhotoCardContainer;
+export default connect(mapDispatchToProps)(PhotoCard);

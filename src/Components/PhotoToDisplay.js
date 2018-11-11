@@ -3,20 +3,20 @@ import React from "react";
 //styling my page
 const PhotoContainer = {
   backgroundImage: `url("/images/background2.jpg")`,
-  height: "100%",
+  height: "1000px",
   backgroundRepeat: "no-repeat",
   backgroundAttachement: "fixed"
 };
 
 const PhotoItemContainer = {
-  width: "600px",
   border: "5px solid pink",
   borderRadius: "12px 0px",
   backgroundColor: "rgba(0, 140, 255, .5)",
   display: "flex",
   flexDirection: "column",
   marginTop: "5%",
-  marginLeft: "20%"
+  marginLeft: "20%",
+  width: "40%"
 };
 
 const PhotoTitle = {
@@ -27,7 +27,8 @@ const PhotoTitle = {
 };
 
 const ImageCard = {
-  borderRadius: "12px 0px"
+  borderRadius: "12px 0px",
+  width: "50%"
 };
 const FavorisButton = {
   border: "none",
@@ -49,31 +50,34 @@ const FavorisImage = {
  *with specifique Id taked from the nested route
  **onclik lIKE ICON we dispatch an to redux reducer wishlist to ad it to wishlit
  */
-const notificate = () => {
-  prompt("GREAT YOUR PHOTO IS ADDED");
-};
+function notificate() {
+  return alert("GREAT YOUR PHOTO IS ADDED TO YOUR WISHLIST");
+}
 const PhotoToDisplay = props => {
-  const { id = 0, photos = {}, onAddWish = () => {} } = props;
-  const { title = "", url = "" } = photos[id]; //destruturing of props we make a default values to dont return undifined to our view
-  console.log(props.id); // we have Id that we take it from the route and the photo that we take it from store
+  const { id = 0, photos = [], onAddWish = () => {} } = props;
+  //const { title = "", url = "" } = photos; //destruturing of props we make a default values to dont return undifined to our view
+  console.log([...photos][id]); // tableau d'objet images
+
+  // we have Id that we take it from the route and the photo that we take it from store
   return (
     <div style={PhotoContainer}>
       <h1 style={{ color: "white", marginLeft: "30px" }}> YOUR PHOTO </h1>
       <div style={PhotoItemContainer}>
         <div>
-          <img style={ImageCard} src={url} alt="" />
+          <img style={ImageCard} src={[...photos][id].url} alt="" />
         </div>
         <div>
-          <p style={PhotoTitle}>{title}</p>
+          <p style={PhotoTitle}>{[...photos][id].title}</p>
         </div>
         <button
           onClick={() => {
-            onAddWish(photos[id]);
+            onAddWish([...photos][id]);
             notificate();
+            console.log([...photos][id]);
           }}
           style={FavorisButton}
         >
-          <img style={FavorisImage} src="./images/heart.png" alt="icon" />
+          <img style={FavorisImage} src="/images/heart.png" alt="icon" />
         </button>
       </div>
     </div>
@@ -82,7 +86,7 @@ const PhotoToDisplay = props => {
 
 const mapStateToProps = state => {
   return {
-    photos: state.Album
+    photos: state.Album.filter(el => el.id)
   };
 };
 

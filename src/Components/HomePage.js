@@ -8,9 +8,10 @@ import Hoc from "./Hoc";
 const HomePageContainer = {
   background: `url("/images/background1.jpg")`,
   height: "100%",
-  backgroundRepeat: "no-repeat",
   position: "statique",
-  marginTop: "0px"
+  marginTop: "0px",
+  zIndex: "-9",
+  backgroundPosition: "top"
 };
 
 const AlbumListToDisplay = {
@@ -43,7 +44,7 @@ class HomePage extends Component {
   render() {
     const { isLoading } = this.state;
     if (isLoading) {
-      return <Hoc message={isLoading} />;
+      return <Hoc message={"welcome..."} />;
     } else {
       return (
         <div style={HomePageContainer}>

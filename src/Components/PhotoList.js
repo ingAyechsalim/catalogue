@@ -2,13 +2,11 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import PhotoCard from "./PhotoCard";
 import axios from "axios";
-
 import Hoc from "./Hoc";
 
 const PhotoListContainer = {
   background: `url("/images/background2.jpg")`,
   height: "100%",
-  backgroundRepeat: "no-repeat",
   backgroundAttachement: "fixed"
 };
 
@@ -22,7 +20,7 @@ const PhotoToDisplay = {
  *and we fetch all
 *photos from this url using componentDidmount lifecycle, after that we dispatch those photos to our redux store finally we display those photo in our
 *component using map that's it 
-*we have use of corse our HOC spinner to make beautiful view
+*we have use of corse our HOC spinner to make beautiful view adding setTimeout function :p
 
 */
 class PhotoList extends Component {
@@ -40,15 +38,17 @@ class PhotoList extends Component {
   componentDidMount() {
     axios.get(this.state.apiUrl1).then(res => {
       this.props.initPhotoList(res.data);
-      this.setState({
-        isLoading: false
-      });
+      setTimeout(() => {
+        this.setState({
+          isLoading: false
+        });
+      }, 1000);
     });
   }
   render() {
     const { isLoading } = this.state;
     if (isLoading) {
-      return <Hoc message={isLoading} />;
+      return <Hoc message={"your photolist"} />;
     } else {
       return (
         <div style={PhotoListContainer}>

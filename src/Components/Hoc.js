@@ -9,9 +9,14 @@ import React from "react";
  */
 const Hoc = props => {
   return (
-    <div style={{ paddingTop: "25%", paddingLeft: "40%" }}>
-      loading ...{props.message}
-      <img src="./images/loader.gif" alt="spinner" />
+    <div
+      style={{
+        paddingTop: "25%",
+        paddingLeft: "40%"
+      }}
+    >
+      <img src="/images/loader.gif" alt="spinner" />
+      <h1 style={{ marginRight: "20px" }}>{props.message}</h1>
     </div>
   );
 };
